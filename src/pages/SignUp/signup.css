@@ -1,0 +1,68 @@
+ 
+.container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container .login-container{
+    display:flex;
+    flex-direction:column;  
+    max-width:462px;
+    width:100%;
+}
+
+.container .login-container .logo_img{
+    height:30px;
+    margin-bottom:20px;
+}
+
+.container .input-container{
+    background-color:#342E2E;
+    padding:16px;
+    border-radius:4px;
+    display:flex;
+    max-width:462px;
+    margin-bottom:5px;
+}
+
+.container .input-container input{
+    background:transparent;
+    outline:none;
+    border:none;
+    padding-left:30px;
+    color: #ffffff;
+    font-size:1.6rem;
+}
+
+.container  .btn-register{
+    padding:16px;
+    background-color:#0E20C5;
+    outline:none;
+    border-radius:4px;
+    border:none;
+    color:#ffffff;
+    font-size:1.6rem;
+    transition:all 0.9;
+    text-transform:uppercase;
+}
+
+.container  .btn-register:hover{
+    background-color:#3446E7;
+}
+
+.container .btn-nova-conta{
+    background-color:transparent;
+    outline:none;
+    border:none;
+    margin-top:10px;
+    font-size:1.4rem;
+    color:#ffffff;
+    
+ }
+
+.container .btn-nova-conta:hover{
+    color:#D3CFCF;
+}

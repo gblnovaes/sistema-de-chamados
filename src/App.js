@@ -1,7 +1,19 @@
+import {BrowserRouter} from 'react-router-dom';
 
+import RoutesApp from './routes'
+
+import './global.css'
+import AuthProvider from './contexts/auth';
+ 
 function App() {
+
   return (
-    <div>Sistema de Chamados</div>
+  <AuthProvider>
+    <BrowserRouter>
+        <RoutesApp />
+    </BrowserRouter>
+  </AuthProvider>
+
   );
 }
 
