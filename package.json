@@ -37,6 +37,7 @@
     ]
   },
   "devDependencies": {
-    "firebase": "^8.8.1"
+    "firebase": "^8.8.1",
+    "react-toastify": "^9.0.8"
   }
 }

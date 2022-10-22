@@ -1,24 +1,17 @@
 
-import {useState, useEffect} from 'react';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/auth';
 import {useContext} from  'react'
  
 export function Private({children}){
      
-const [signed,setSigned] = useState(false)
- const user = useContext(AuthContext);
+const {signed} = useContext(AuthContext);
+ const navigate = useNavigate();
     
-    
-    console.log(!user.signed)
-    
-    if(!user.signed){
-        return <Navigate to='/' />
+    if(!signed){
+         navigate('/')
     } 
     
     return children
 
-    
-    
-    
 }

@@ -6,6 +6,8 @@ import './signup.css';
  import { Link,useNavigate } from 'react-router-dom';
  import firebase from '../../services/firebase.config'
  import {useState} from 'react'
+ import { toast } from 'react-toastify';
+
 
  
 export function SignUp(){
@@ -20,22 +22,22 @@ export function SignUp(){
   e.preventDefault()
     
   if(email === '' ){
-    alert('Preencha o campo email');
+    toast.warning('Preencha o campo email')
     return
   }
   
   if(password === '' ){
-    alert('Preencha o campo password');
+    toast.warning('Preencha o campo senha')
     return
   }
   
   if(confirmPassword === '' ){
-    alert('Preencha o campo Confirmar Password');
+    toast.warning('Preencha o campo Confirmar Senha')
     return
   }
   
   if(password!== confirmPassword){
-    alert('Campos Senha e Confirmar Senha precisam ser iguais');
+    toast.warning('Campos Senha e Confirmar Senha precisam ser iguais')
     return 
   }
 
@@ -66,7 +68,7 @@ export function SignUp(){
                 
               <div className="input-container"> 
                 <img src={img_users} className='' alt='Icon User' />
-                <input type="text" placeholder='Login' value={email} onChange={(e) => setEmail(e.target.value)} />
+                <input type="text" placeholder='E-mail' value={email} onChange={(e) => setEmail(e.target.value)} />
             </div>
             
             <div className="input-container"> 

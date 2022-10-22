@@ -1,4 +1,4 @@
-import './signin.css';
+ import './signin.css';
  import login_bg from '../../assets/login_bg.svg';
  import logo_bg from '../../assets/logo.svg';
  import img_users from '../../assets/users.svg';
@@ -8,6 +8,8 @@ import './signin.css';
  import {useContext} from 'react'
  import { AuthContext } from '../../contexts/auth'
  import { useState } from 'react';
+ import { toast } from 'react-toastify';
+
 
 
 export function SignIn(){
@@ -21,10 +23,19 @@ export function SignIn(){
   async function handleSubmi(e) {
     e.preventDefault();
     
+    if(email === '' ){
+      toast.warning('Preencha o campo email')
+      return
+    }
+    
+    if(password === '' ){
+      toast.warning('Preencha o campo password')
+      return
+    }
+    
+    
     await firebase.auth().signInWithEmailAndPassword(email,password)
       .then((response) =>{
-        
-        // console.log(response.user)
         const userData = {
           uid: response.user.uid,
           email: response.user.email
@@ -34,12 +45,14 @@ export function SignIn(){
         
          setEmail('')
          setPassword('')
-         
+         toast.success('Seja Bem Vindo!!!')
          navigate('/dashboard')
 
       })
       .catch((error)=>{
         console.log(error)
+        toast.error('E-mail ou Senha Inválidos.!!!')
+        return
       })
     }
     
@@ -49,7 +62,7 @@ export function SignIn(){
   
     return(
           
-              <div className="container">
+          <div className="container">
               
             <div className="login-bg-container">
                <img src={login_bg} alt="Imagem de Login"/>

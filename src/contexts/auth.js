@@ -31,8 +31,15 @@ export default function AuthProvider({ children }){
     }, []);
     
     
+    async function signOut(){
+        await firebase.auth().signOut()
+        console.log("Deslogado " )
+        localStorage.removeItem('@SistemaUser')
+    }
+    
+    
     return(
-        <AuthContext.Provider value={{signed:signed,  user:user}}>
+        <AuthContext.Provider value={{signed:signed,  user:user, signOut}}>
        
           {children}    
             
