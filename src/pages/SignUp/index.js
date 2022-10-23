@@ -7,15 +7,18 @@ import './signup.css';
  import firebase from '../../services/firebase.config'
  import {useState} from 'react'
  import { toast } from 'react-toastify';
+ import {useContext} from  'react'
+ import { AuthContext } from '../../contexts/auth';
 
 
  
 export function SignUp(){
 
- const [email,setEmail] = useState('')
- const [password,setPassword] = useState('')
- const [confirmPassword,setConfirmPassword] = useState('')
- const navigate = useNavigate()
+  const [name,setName] = useState('')
+  const [email,setEmail] = useState('')
+  const [password,setPassword] = useState('')
+  const navigate = useNavigate()
+  const {saveUser} = useContext(AuthContext);
 
 
  async function handleSubmit(e){
@@ -31,21 +34,35 @@ export function SignUp(){
     return
   }
   
-  if(confirmPassword === '' ){
-    toast.warning('Preencha o campo Confirmar Senha')
+  if(name === '' ){
+    toast.warning('Preencha o campo nome')
     return
   }
-  
-  if(password!== confirmPassword){
-    toast.warning('Campos Senha e Confirmar Senha precisam ser iguais')
-    return 
-  }
+
 
   await firebase.auth().createUserWithEmailAndPassword(email,password)
-  .then(()=>{
+  .then(async (value) =>{
+        
+    let uid = value.user.uid
+
+    await firebase.firestore().collection('users').doc(uid).set({
+      name: name,
+      avatarUrl: null,
+      email: email,
+      uid: uid
+    }).then(() => {
+      
+      let data = {
+        uid: uid,
+        avatarUrl: null,
+        name: name,
+        email: email,
+      }
+      
+      saveUser(data)
+    })
+    
     navigate('/dashboard')
-    setEmail('')
-    setPassword('')
   })
   .catch((error)=>{
     if(error.code === 'auth/weak-password'){
@@ -65,7 +82,14 @@ export function SignUp(){
               <img className='logo_img' src={logo_bg} alt="Logo" />
               
               <form onSubmit={handleSubmit}>
-                
+              
+              
+              
+              <div className="input-container"> 
+            <img src={img_users} className='' alt='Icon User' />
+              <input type="text" placeholder='Seu nome' value={name} onChange={(e) => setName(e.target.value)} />
+            </div>
+            
               <div className="input-container"> 
                 <img src={img_users} className='' alt='Icon User' />
                 <input type="text" placeholder='E-mail' value={email} onChange={(e) => setEmail(e.target.value)} />
@@ -73,13 +97,10 @@ export function SignUp(){
             
             <div className="input-container"> 
             <img src={img_lock} className='' alt='Icon Lock' />
-              <input type="text" placeholder='Senha' value={password} onChange={(e) => setPassword(e.target.value)} />
+              <input type="password" placeholder='Senha' value={password} onChange={(e) => setPassword(e.target.value)} />
             </div>
             
-            <div className="input-container"> 
-            <img src={img_lock} className='' alt='Icon Lock' />
-              <input type="text" placeholder='Confirmar Senha' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
-            </div>
+            
             
             <button className='btn-register' >Cadastre-se</button>
             <Link className='btn-nova-conta' to='/'>Nao te conta ? Crie uma agora.</Link>

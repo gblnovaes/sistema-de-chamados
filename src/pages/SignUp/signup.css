@@ -33,11 +33,18 @@
     outline:none;
     border:none;
     padding-left:30px;
-    color: #ffffff;
+    color: #ffffff !important;
     width:100%;
     font-size:1.6rem;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active  {
+    -webkit-box-shadow: 0 0 0 30px #342E2E inset !important;
+    -webkit-text-fill-color: #ffffff!important;
+}
 .container  .btn-register{
     padding:16px;
     background-color:#0E20C5;

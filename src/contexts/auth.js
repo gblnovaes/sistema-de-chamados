@@ -12,17 +12,7 @@ export default function AuthProvider({ children }){
     useEffect(() => {
         async function checkLogin(){
             await firebase.auth().onAuthStateChanged(user =>{
-                if(user){
-                    const userData ={
-                        uid: user.uid,
-                        email: user.email
-                    }
-                    localStorage.setItem("@SistemaUser",JSON.stringify(userData)) 
-                    setUser(user)
-                    setSigned(true)
-                }else{
-                    setSigned(false)
-                }
+               loadStorage()
             })
         }
         
@@ -31,15 +21,35 @@ export default function AuthProvider({ children }){
     }, []);
     
     
+    async function loadStorage() {
+        let userInfo = localStorage.getItem('@SistemaUser')
+                
+        if(userInfo){
+            setUser(JSON.parse(userInfo))
+            setSigned(true)
+        }else{
+            setSigned(false)
+        }
+        
+    }
+     
+    async function saveUser(data){
+        localStorage.removeItem('@SistemaUser')
+        localStorage.setItem("@SistemaUser",JSON.stringify(data))  
+        setUser(data)
+        setSigned(true)  
+    }
+    
+ 
     async function signOut(){
         await firebase.auth().signOut()
-        console.log("Deslogado " )
         localStorage.removeItem('@SistemaUser')
+        setSigned(false)
     }
     
     
     return(
-        <AuthContext.Provider value={{signed:signed,  user:user, signOut}}>
+        <AuthContext.Provider value={{signed:signed,  user:user, signOut,saveUser}}>
        
           {children}    
             

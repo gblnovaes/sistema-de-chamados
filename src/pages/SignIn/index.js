@@ -3,9 +3,10 @@
  import logo_bg from '../../assets/logo.svg';
  import img_users from '../../assets/users.svg';
  import img_lock from '../../assets/lock.svg';
- import { Link,useNavigate } from 'react-router-dom';
  import firebase from '../../services/firebase.config';
- import {useContext} from 'react'
+ 
+ import { Link,useNavigate } from 'react-router-dom';
+ import { useContext } from 'react'
  import { AuthContext } from '../../contexts/auth'
  import { useState } from 'react';
  import { toast } from 'react-toastify';
@@ -17,7 +18,7 @@ export function SignIn(){
   const [email,setEmail] =  useState('')
   const [password,setPassword] = useState('')
   const navigate = useNavigate();
-  const {signed} = useContext(AuthContext)
+  const {signed,saveUser} = useContext(AuthContext)
 
 
   async function handleSubmi(e) {
@@ -36,18 +37,19 @@ export function SignIn(){
     
     await firebase.auth().signInWithEmailAndPassword(email,password)
       .then((response) =>{
-        const userData = {
-          uid: response.user.uid,
-          email: response.user.email
-        }
-        
-        localStorage.setItem("@SistemaUser",JSON.stringify(userData))
-        
-         setEmail('')
-         setPassword('')
-         toast.success('Seja Bem Vindo!!!')
-         navigate('/dashboard')
-
+                
+        firebase.firestore().collection('users').doc(response.user.uid).get().then((response) =>{
+          let userData = {
+            uid: response.data().uid,
+            avatarUrl: response.data().avatarUrl !== null ? response.data().avatarUrl : null,
+            name: response.data().name !== null ? response.data().name : null,
+            email: response.data().email,
+          }
+            saveUser(userData)
+              toast.success( `Seja Bem Vindo!!! - ${response.data().name !== null ? response.data().name : null}`)
+         }).catch((error) =>{
+          toast.error('Nao foi possivel encontrar dados de Usuario :-(')
+         })
       })
       .catch((error)=>{
         console.log(error)
