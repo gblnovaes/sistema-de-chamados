@@ -1,10 +1,11 @@
  
 .container{
-     width: 100%;
-    height: 100vh;
+    /* width: 100%; */
+    /* height: 100vh; */
     display: flex;
-    justify-content: center;    
-    align-items: center;
+    background-color: #191919 !important;
+    /* justify-content: center;     */
+    /* align-items: center; */
 }
 
 .container .login-container{
@@ -69,4 +70,17 @@
 
 .container .btn-nova-conta:hover{
     color:#D3CFCF;
+}
+
+@media screen and (max-width:700px){
+    
+    .container{
+        height: 100vh;
+        padding: 0 30px;
+        width:100%;
+        max-width:600px;
+    }
+    .container .login-bg-container{
+        display:none;
+    }
 }
