@@ -16,11 +16,11 @@ export function Profile(){
     const [name,setName] = useState(user && user.name)
     const [email,setEmail] = useState(user && user.email)
     const [imageAvatar,setImageAvatarUrl] = useState(user && user.email)
-    
+
     if(!signed){
         return( <Navigate  to = '/' /> )
     }
-    
+
     function handleSave(e) {
         e.preventDefault()
         
@@ -48,8 +48,7 @@ export function Profile(){
         
         
     }
-    
-    
+ 
     async function handleUpload(){
         await firebase.storage().ref(`images/${user.uid}/${imageAvatar.name}`)
         .put(imageAvatar)
@@ -81,8 +80,7 @@ export function Profile(){
           console.log("Foto Enviada com sucesso.")  
         })   
     }
-    
-    
+ 
     function handleFile(e){
         // console.log(e.target.files[0])
         if(e.target.files[0]){
