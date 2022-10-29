@@ -87,7 +87,7 @@ export function SignIn(){
                 </div>
                 
                 <button className='btn-entrar'>ENTRAR</button>
-                <Link className='btn-nova-conta' to='/register'>Nao te conta ? Crie uma agora.</Link>
+                <Link className='btn-nova-conta' to='/register'>Nao tem conta ? Crie uma agora.</Link>
             </form> 
             </div>
             

@@ -103,7 +103,7 @@ export function SignUp(){
             
             
             <button className='btn-register' >Cadastre-se</button>
-            <Link className='btn-nova-conta' to='/'>Nao te conta ? Crie uma agora.</Link>
+            <Link className='btn-nova-conta' to='/'>Nao tem conta ? Crie uma agora.</Link>
             
               </form>
               
