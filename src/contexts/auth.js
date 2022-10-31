@@ -11,8 +11,11 @@ export default function AuthProvider({ children }){
     
     useEffect(() => {
         async function checkLogin(){
-            await firebase.auth().onAuthStateChanged(user =>{
-               loadStorage()
+                firebase.auth().onAuthStateChanged(user =>{
+                if(user != null){
+                    loadStorage()
+                }
+                
             })
         }
         
