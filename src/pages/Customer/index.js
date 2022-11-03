@@ -5,6 +5,8 @@ import { AuthContext } from '../../contexts/auth'
 import {Header} from '../../components/Header' 
 import { Title } from '../../components/Title'
 import { FiUser } from "react-icons/fi"
+import firebase  from '../../services/firebase.config'
+import { toast } from 'react-toastify'
 
 export function Customer(){
     const {signed} = useContext(AuthContext)
@@ -16,10 +18,26 @@ export function Customer(){
         return( <Navigate  to = '/' /> )
     }
     
-    function handleSave(e){
+    async function handleSave(e){
         e.preventDefault()
+        if(nomeFantasia !== '' && cnpj !== '' && endereco !== ''){
+            await firebase.firestore().collection('customers').add({
+                nomeFantasia,
+                cnpj,
+                endereco
+            }).then(()=>{
+                 setNomeFantasia('')
+                 setCnpj('')
+                 setEndereco('')
+                 toast.success("Cliente salvo com sucesso.")
+            }).catch((error)=>{
+                toast.error("Erro ao tentar cadastrar novo cliente")
+            })
+        }else{
+            toast.error("Preencha todos os campos.")   
+        }
         
-        alert(nomeFantasia,cnpj)
+       
     }
     
     return(
