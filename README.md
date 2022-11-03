@@ -9,7 +9,7 @@
 - [x] Login de usuário
 - [x] Cadastro de usuário
 - [x] Editar perfil de usuário
-- [ ] Cadastro de cliente
+- [x] Cadastro de cliente
 - [ ] Cadastro de chamados
 - [ ] Listagem de chamados
 

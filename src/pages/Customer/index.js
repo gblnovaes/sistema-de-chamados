@@ -35,9 +35,7 @@ export function Customer(){
             })
         }else{
             toast.error("Preencha todos os campos.")   
-        }
-        
-       
+        }      
     }
     
     return(
