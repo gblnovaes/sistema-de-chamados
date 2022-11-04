@@ -81,24 +81,24 @@
     object-fit:cover;
  }
  
- .container .form-profile label{
+ .form-profile label{
     margin-bottom:.5em;
     font-size:1.2em;
  }
  
- .container .form-profile input, textarea, select{
+ .form-profile input, textarea, select{
   margin-bottom:1em;
   background-color:#f5f5f5;
   padding:0.7em;
   border:none;
   border-radius:4px;
-  max-width:600px;
+  max-width: 600px;
   }
   
-  .container .form-profile input:disabled{
+  .form-profile input:disabled{
     cursor:not-allowed;
   }
-  .container .form-profile  button{
+   .form-profile  button{
     padding:.7em;
     max-width:600px;
   }

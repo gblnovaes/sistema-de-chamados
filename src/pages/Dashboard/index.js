@@ -54,7 +54,7 @@ export function Dashboard(){
                         <tr>
                             <td data-label="Cliente"> Pizzaria do Joao </td>
                             <td data-label="Assunto"> Manutencao do computador da pizzaria </td>
-                            <td data-label="Status" style={{backgroundColor:'#5cb856'}}><span className='badge'>Em andamento</span></td>
+                            <td data-label="Status"><span style={{backgroundColor:'#5cb856'}} className='badge'>Em andamento</span></td>
                             <td data-label="Cadastrado"> 22/05/2022</td>
                             <td data-label="#">
                                 <button className='action' style={{backgroundColor: '#3583f6'}}>
