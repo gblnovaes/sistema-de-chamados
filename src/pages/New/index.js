@@ -4,12 +4,29 @@ import { AuthContext } from '../../contexts/auth'
 import { Navigate } from 'react-router-dom'
 import { Header } from '../../components/Header'
 import { Title } from '../../components/Title'
-import { FiMessageSquare } from "react-icons/fi"
+import { FiPlus } from "react-icons/fi"
+import { useState, useEffect } from 'react'
 import './new.css'
 
 export function New(){
     
-    const {signed} = useContext(AuthContext)
+    const [loadcustomers,setLoadCustomers] = useState(true)
+    const [customer, setCustomer] = useState([])
+    const [customerSelected, setCustomerSelected] = useState(0)
+    
+    const [assunto, setAssunto] = useState('Suporte')
+    const [status, setStatus] = useState('Aberto')
+    const [complemento,setComplemento] = useState('')
+    const {signed, user} = useContext(AuthContext)
+    
+    
+    useEffect(() => {
+        async function loadcustomers(){
+            
+        }
+        
+        loadcustomers()
+    }, []);
     
     if(!signed){
         return( <Navigate  to = '/' /> )
@@ -19,13 +36,23 @@ export function New(){
         e.preventDefault()
     }
     
+    function handleChangeSelect(e){
+        setAssunto(e.target.value)
+        console.log(assunto)
+    }
     
+    function handleOptionChange(e){
+        setStatus(e.target.value)
+      
+    }
+ 
+ 
     return(
         <div>
         <Header />
         <div className='content'>
             <Title name="Novo Chamado">
-                <FiMessageSquare size={25} />
+                <FiPlus size={25} />
             </Title>
             
             <div className="container">
@@ -41,26 +68,26 @@ export function New(){
                 </select>
                 
                 <label htmlFor="">Assunto</label>
-                <select >
-                    <option key={1} value={1}>Suporte 1</option>
-                    <option>Visita Tecnica 2</option>
+                <select  value={assunto} onChange={ handleChangeSelect }>
+                    <option key={1} value={1}>Suporte</option>
+                    <option>Visita Tecnica</option>
                     <option>Financeiro</option>
                 </select>
                   
                 <label htmlFor="">Status</label>
                 <div className="status">
-                    <input type="radio" name="radio" value="Aberto" className="" />
+                    <input type="radio"  value="Aberto" checked={status === 'Aberto' } name="radio"  onChange={  handleOptionChange }/>
                     <span>Em Aberto</span>
                     
-                    <input type="radio" name="radio" value="Progresso" className="" />
+                    <input type="radio" name="radio" value="Progresso" checked={status === 'Progresso' }   onChange={ handleOptionChange } />
                     <span>Em Progresso</span>
                     
-                    <input type="radio" name="radio" value="Atendida" className="" />
+                    <input type="radio" name="radio"  value="Atendida"   checked={status === 'Atendida' }  onChange={  handleOptionChange }/>
                     <span>Atendida</span>
                 </div>
                 
                 <label htmlFor="">Complemento</label>
-                <textarea  cols="30" rows="10" placeholder="Descreva seu problema(opcional) "></textarea>
+                <textarea  placeholder="Descreva seu problema(opcional) " value={complemento} onChange={(e) => setComplemento(e.target.value)}></textarea>
                 <button>Registrar Chamado</button> <br />
 
             </form>

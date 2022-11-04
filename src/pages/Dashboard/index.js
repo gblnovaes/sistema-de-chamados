@@ -60,7 +60,7 @@ export function Dashboard(){
                                 <button className='action' style={{backgroundColor: '#3583f6'}}>
                                     <FiSearch size={17} color={'#fff'}/>
                                 </button>
-                                <button style={{backgroundColor: '#f6a935'}}>
+                                <button className='action' style={{backgroundColor: '#f6a935'}}>
                                     <FiEdit2 size={17} color={'#fff'}/>
                                 </button>
                             </td>

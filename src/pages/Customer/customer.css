@@ -52,7 +52,7 @@
   padding:0.7em;
   border:none;
   border-radius:4px;
-  max-width:600px;
+  max-width:500px;
   }
   
   .container .form-profile input:disabled{
@@ -61,7 +61,7 @@
   .container .form-profile  button{
     padding:.7em;
     max-width:100%;
-    width:600px;
+    width:500px;
     height:42px;
     border-radius:4px;
     outline:none;
@@ -74,7 +74,7 @@
   
    
  
- @media screen and (max-width:700px){
+ @media screen and (max-width:600px){
   .content .container{
     justify-content: center;
   }
