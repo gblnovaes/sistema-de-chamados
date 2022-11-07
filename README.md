@@ -10,7 +10,7 @@
 - [x] Cadastro de usuário
 - [x] Editar perfil de usuário
 - [x] Cadastro de cliente
-- [ ] Cadastro de chamados
+- [x] Cadastro de chamados
 - [ ] Listagem de chamados
 
 ### Pré-requisitos
