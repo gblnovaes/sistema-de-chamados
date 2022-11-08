@@ -21,8 +21,6 @@ export function Dashboard(){
    
   
     useEffect(() =>{
-        
-     
         loadingChamados()
          return () => {}
     },[])
@@ -35,7 +33,7 @@ export function Dashboard(){
     async function loadingChamados(){
         await listRef.limit(5).get()
         .then((snapshot) => {
-          console.log(snapshot.docs.length.toString())
+        
            updateState(snapshot)
         })
         .catch((error) => {
@@ -44,17 +42,13 @@ export function Dashboard(){
         })
         setLoading(false)
     }
-    
-    
-  
-      
- 
-    
+
     function updateState(snapshot){
         const isCollectionEmpty = snapshot.size === 0  
+            
         if(!isCollectionEmpty) {
             let lista = []
-            
+
             snapshot.forEach((doc) =>{
                 lista.push({
                     id: doc.id,
@@ -62,15 +56,15 @@ export function Dashboard(){
                     cliente: doc.data().cliente,
                     userId: doc.data().userId,
                     created: doc.data().created,
-                   createdFormated: format(doc.data().created.toDate(),'dd/MM/yyyy'),
+                    createdFormated: format(doc.data().created.toDate(),'dd/MM/yyyy'),
                     status: doc.data().status,
                     complement: doc.data().complemento
                 })
             })
             
             const lastDoc = snapshot.docs[snapshot.docs.length - 1] //pegando o ultmo documento encontrado
-            
-            setChamados(chamados => [...chamados,...lista])
+             
+            setChamados([...chamados, ...lista])
             
             setLastDocs(lastDoc)
         }else{
@@ -80,6 +74,15 @@ export function Dashboard(){
         setLoadMore(false)
         
     } 
+    
+    async function handleMore() { 
+        setLoadMore(true)
+        await listRef.startAfter(lastDocs).limit(5)
+        .get()
+        .then((snapshot) =>{
+            updateState(snapshot)
+        })
+    }
     
     
     if(loading){
@@ -137,10 +140,10 @@ export function Dashboard(){
                     </thead>
                     <tbody>
                        {
-                        chamados.map((chamado,index) =>{
+                        chamados.map((chamado,indice) =>{
                             
                             return(
-                                <tr key={index}>
+                                <tr key={indice}>
                                     <td data-label="Cliente"> {chamado.cliente} </td>
                                     <td data-label="Assunto"> {chamado.assunto} </td>
                                     <td data-label="Status"><span style={{backgroundColor:chamado.status==='Aberto'?'#5cb856':'#888'}} className='badge'>{chamado.status}</span></td>
@@ -161,7 +164,8 @@ export function Dashboard(){
                         
                     </tbody>
                 </table>
-                
+                {loadMore && <h3 style={{marginTop:15,textAlign:'center' }}>Buscando chamados...</h3>}
+                {!loadMore && !isEmpty &&  <button className='btn-more' onClick={handleMore}>Buscar Mais</button>}
                 </>
             )} 
          

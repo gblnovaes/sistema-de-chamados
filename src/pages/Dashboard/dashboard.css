@@ -93,6 +93,16 @@ table td .badge {
     border-radius:3px;
 }
 
+.btn-more {
+    width:200px;
+    margin-top:0.9em;
+    margin-bottom:1.5em;
+    border-radius:8px;
+    background-color: #181c2e;
+    color: #fff;
+    padding:12px;   
+}
+
 @media screen and (max-width:600px) {
     table {
         border:0;
@@ -133,5 +143,16 @@ table td .badge {
     }
     table td:last-child{
         margin-bottom:0;
+    }
+    
+    .btn-more {
+        width:100%;
+        max-width:100%;
+        margin-top:0.9em;
+        margin-bottom:1.5em;
+        border-radius:8px;
+        background-color: #181c2e;
+        color: #fff;
+        padding:12px;   
     }
 } 
