@@ -11,7 +11,8 @@
 - [x] Editar perfil de usuário
 - [x] Cadastro de cliente
 - [x] Cadastro de chamados
-- [ ] Listagem de chamados
+- [ ] Modal de Detalhes de chamado
+- [ ] Edição de chamado 
 
 ### Pré-requisitos
 
