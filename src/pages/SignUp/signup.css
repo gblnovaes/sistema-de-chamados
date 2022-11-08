@@ -1,24 +1,27 @@
- 
-.container{
-     height: 100vh;
+
+.container-sigup{
+    width: 100%; 
+    height: 100vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    background-color: #191919 !important;
+    justify-content: center;    
+    align-items: center; 
 }
 
-.container .login-container{
+
+.container-sigup .login-container{
     display:flex;
     flex-direction:column;  
     max-width:462px;
     width:100%;
 }
 
-.container .login-container .logo_img{
+.container-sigup .login-container .logo_img{
     height:30px;
     margin-bottom:20px;
 }
 
-.container .input-container{
+.container-sigup .input-container{
     background-color:#342E2E;
     padding:16px;
     border-radius:4px;
@@ -27,7 +30,7 @@
     margin-bottom:5px;
 }
 
-.container .input-container input{
+.container-sigup .input-container input{
     background:transparent;
     outline:none;
     border:none;
@@ -44,7 +47,16 @@ input:-webkit-autofill:active  {
     -webkit-box-shadow: 0 0 0 30px #342E2E inset !important;
     -webkit-text-fill-color: #ffffff!important;
 }
-.container  .btn-register{
+
+.btn-container {
+    border-radius:4px;
+    display:flex;
+    max-width:462px;
+    flex-direction:column;
+    margin-bottom:5px;
+}
+
+.container-sigup  .btn-register{
     padding:16px;
     background-color:#0E20C5;
     outline:none;
@@ -56,20 +68,20 @@ input:-webkit-autofill:active  {
     text-transform:uppercase;
 }
 
-.container  .btn-register:hover{
+.container-sigup .btn-register:hover{
     background-color:#3446E7;
 }
 
-.container .btn-nova-conta{
+.container-sigup .btn-nova-conta{
     background-color:transparent;
     outline:none;
     border:none;
     margin-top:10px;
     font-size:1.4rem;
     color:#ffffff;
-    
+    text-align:center;
  }
 
-.container .btn-nova-conta:hover{
+ .container-sigup .btn-nova-conta:hover{
     color:#D3CFCF;
 }

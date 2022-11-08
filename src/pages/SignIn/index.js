@@ -64,7 +64,7 @@ export function SignIn(){
   
     return(
           
-          <div className="container">
+          <div className="container-signin">
               
             <div className="login-bg-container">
                <img src={login_bg} alt="Imagem de Login"/>
@@ -84,11 +84,14 @@ export function SignIn(){
                 <div className="input-container"> 
                 <img src={img_lock} className='' alt='Icon Lock' />
                   <input type="text" placeholder='Senha' value={password} onChange={ (e) => setPassword(e.target.value)} />
+                </div>   
+                <div className="btn-container"> 
+                    <button className='btn-entrar'>ENTRAR</button>
+                    <Link className='btn-nova-conta' to='/register'>Nao tem conta ? Crie uma agora.</Link>
                 </div>
-                
-                <button className='btn-entrar'>ENTRAR</button>
-                <Link className='btn-nova-conta' to='/register'>Nao tem conta ? Crie uma agora.</Link>
             </form> 
+              
+              
             </div>
             
         </div>

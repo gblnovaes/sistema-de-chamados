@@ -73,7 +73,7 @@ export function SignUp(){
   })
 }
     return(
-        <div className="container">
+        <div className="container-sigup">
             <div className="login-bg-container">
                <img src={login_register} alt="Imagem de Login"/>
             </div>
@@ -102,8 +102,10 @@ export function SignUp(){
             
             
             
-            <button className='btn-register' >Cadastre-se</button>
+          <div className="btn-container">
+          <button className='btn-register' >Cadastre-se</button>
             <Link className='btn-nova-conta' to='/'>Nao tem conta ? Crie uma agora.</Link>
+          </div>
             
               </form>
               

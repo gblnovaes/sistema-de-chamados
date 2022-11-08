@@ -1,30 +1,30 @@
  
-.container{
-    /* width: 100%; */
-    /* height: 100vh; */
+.container-signin{
+    width: 100%; 
+    height: 100vh;
     display: flex;
     background-color: #191919 !important;
-    /* justify-content: center;     */
-    /* align-items: center; */
+    justify-content: center;    
+    align-items: center; 
 }
 
-.container .login-container{
+.container-signin .login-container{
     display:flex;
     flex-direction:column;  
     max-width:462px;
     width:100%;
 }
 
-.container .login-container .logo_img{
+.container-signin .login-container .logo_img{
     height:30px;
     margin-bottom:20px;
 }
 
-.container form {
+.container-signin form {
     display: flex;
     flex-direction: column;
 }
-.container form .input-container{
+.container-signin form .input-container{
     background-color:#342E2E;
     padding:16px;
     border-radius:4px;
@@ -33,7 +33,7 @@
     margin-bottom:5px;
 }
 
-.container form .input-container input{
+.container-signin form .input-container input{
     background:transparent;
     outline:none;
     border:none;
@@ -43,7 +43,15 @@
     font-size:1.6rem;
 }
 
-.container  .btn-entrar{
+.btn-container {
+    border-radius:4px;
+    display:flex;
+    max-width:462px;
+    flex-direction:column;
+    margin-bottom:5px;
+}
+
+.container-signin  .btn-entrar{
     padding:16px;
     background-color:#0E20C5;
     outline:none;
@@ -54,11 +62,11 @@
     transition:all 0.9;
 }
 
-.container  .btn-entrar:hover{
+.container-signin  .btn-entrar:hover{
     background-color:#3446E7;
 }
 
-.container .btn-nova-conta{
+.container-signin .btn-nova-conta{
     background-color:transparent;
     outline:none;
     border:none;
@@ -68,19 +76,19 @@
     color:#ffffff;
  }
 
-.container .btn-nova-conta:hover{
+.container-signin .btn-nova-conta:hover{
     color:#D3CFCF;
 }
 
 @media screen and (max-width:700px){
     
-    .container{
+    .container-signin{
         height: 100vh;
         padding: 0 30px;
         width:100%;
         max-width:600px;
     }
-    .container .login-bg-container{
+    .container-signin .login-bg-container{
         display:none;
     }
 }

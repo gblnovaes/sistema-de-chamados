@@ -38,6 +38,7 @@
         ]
     },
     "devDependencies": {
+        "date-fns": "^2.29.3",
         "firebase": "^8.8.1",
         "react-toastify": "^9.0.8"
     }
